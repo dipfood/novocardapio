@@ -1,622 +1,829 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<!-- Add Font Awesome CDN in the <head> section -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardápio Digital</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="logo-container">
-            <img src="https://placeholder.svg?height=100&width=100" alt="Logo" class="logo">
-            <p>Carregando...</p>
-        </div>
-    </div>
-
-    <!-- User Info Form -->
-    <div id="user-info-screen" class="hidden">
-        <div class="form-container">
-            <h2>Bem-vindo ao nosso Cardápio</h2>
-            <p>Por favor, informe seus dados para continuar</p>
-            <form id="user-form">
-                <div class="form-group">
-                    <label for="name">Nome:</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Telefone:</label>
-                    <input type="tel" id="phone" required>
-                </div>
-                <button type="submit" class="btn-primary">Continuar</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Main Menu -->
-    <div id="menu-screen" class="hidden">
-        <!-- Header with categories -->
-        <header>
-            <div class="logo-small">
-                <img src="https://placeholder.svg?height=50&width=50" alt="Logo">
-            </div>
-            <nav class="categories-nav">
-                <ul id="categories-list">
-                    <li class="category active" data-category="lanches">Lanches</li>
-                    <li class="category" data-category="bebidas">Bebidas</li>
-                    <li class="category" data-category="porcoes">Porções</li>
-                    <li class="category" data-category="sobremesas">Sobremesas</li>
-                </ul>
-            </nav>
-            <div class="cart-icon" id="cart-icon">
-                <span class="material-icons">shopping_cart</span>
-                <span class="cart-count">0</span>
-            </div>
-        </header>
-
-        <!-- Menu Items Container -->
-        <main>
-            <!-- Lanches Category -->
-            <div class="category-items active" id="lanches">
-                <h2>Lanches</h2>
-                
-                <div class="menu-item" data-id="1" data-name="Misto Quente" data-price="14.00">
-                    <div class="item-image">
-                        <img src="https://placeholder.svg?height=80&width=80" alt="Misto Quente">
-                    </div>
-                    <div class="item-info">
-                        <h3>Misto Quente</h3>
-                        <p>Pão, presunto, queijo, tomate e orégano</p>
-                        <div class="item-price">R$ 14,00</div>
-                        <div class="item-addons">
-                            <h4>Adicionais:</h4>
-                            <div class="addon-option">
-                                <input type="checkbox" id="addon-1-1" data-name="Cebolas Empanadas" data-price="7.00">
-                                <label for="addon-1-1">Cebolas Empanadas (+R$ 7,00)</label>
-                            </div>
-                            <div class="addon-option">
-                                <input type="checkbox" id="addon-1-2" data-name="Bacon" data-price="5.00">
-                                <label for="addon-1-2">Bacon (+R$ 5,00)</label>
-                            </div>
-                        </div>
-                        <button class="add-to-cart">Adicionar</button>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-id="2" data-name="X-Burger" data-price="18.00">
-                    <div class="item-image">
-                        <img src="https://placeholder.svg?height=80&width=80" alt="X-Burger">
-                    </div>
-                    <div class="item-info">
-                        <h3>X-Burger</h3>
-                        <p>Pão, hambúrguer, queijo, alface, tomate e molho especial</p>
-                        <div class="item-price">R$ 18,00</div>
-                        <div class="item-addons">
-                            <h4>Adicionais:</h4>
-                            <div class="addon-option">
-                                <input type="checkbox" id="addon-2-1" data-name="Ovo" data-price="3.00">
-                                <label for="addon-2-1">Ovo (+R$ 3,00)</label>
-                            </div>
-                            <div class="addon-option">
-                                <input type="checkbox" id="addon-2-2" data-name="Bacon" data-price="5.00">
-                                <label for="addon-2-2">Bacon (+R$ 5,00)</label>
-                            </div>
-                        </div>
-                        <button class="add-to-cart">Adicionar</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bebidas Category -->
-            <div class="category-items" id="bebidas">
-                <h2>Bebidas</h2>
-                
-                <div class="menu-item" data-id="3" data-name="Roller 2L" data-price="10.00">
-                    <div class="item-image">
-                        <img src="https://placeholder.svg?height=80&width=80" alt="Roller 2L">
-                    </div>
-                    <div class="item-info">
-                        <h3>Roller 2L</h3>
-                        <p>Refrigerante Roller 2 litros</p>
-                        <div class="item-price">R$ 10,00</div>
-                        <button class="add-to-cart">Adicionar</button>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-id="4" data-name="Suco Natural" data-price="8.00">
-                    <div class="item-image">
-                        <img src="https://placeholder.svg?height=80&width=80" alt="Suco Natural">
-                    </div>
-                    <div class="item-info">
-                        <h3>Suco Natural</h3>
-                        <p>Suco natural de laranja, abacaxi ou maracujá</p>
-                        <div class="item-price">R$ 8,00</div>
-                        <button class="add-to-cart">Adicionar</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Porções Category -->
-            <div class="category-items" id="porcoes">
-                <h2>Porções</h2>
-                
-                <div class="menu-item" data-id="5" data-name="Batata Frita" data-price="15.00">
-                    <div class="item-image">
-                        <img src="https://placeholder.svg?height=80&width=80" alt="Batata Frita">
-                    </div>
-                    <div class="item-info">
-                        <h3>Batata Frita</h3>
-                        <p>Porção de batata frita crocante</p>
-                        <div class="item-price">R$ 15,00</div>
-                        <div class="item-addons">
-                            <h4>Adicionais:</h4>
-                            <div class="addon-option">
-                                <input type="checkbox" id="addon-5-1" data-name="Cheddar" data-price="4.00">
-                                <label for="addon-5-1">Cheddar (+R$ 4,00)</label>
-                            </div>
-                            <div class="addon-option">
-                                <input type="checkbox" id="addon-5-2" data-name="Bacon" data-price="5.00">
-                                <label for="addon-5-2">Bacon (+R$ 5,00)</label>
-                            </div>
-                        </div>
-                        <button class="add-to-cart">Adicionar</button>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-id="6" data-name="Isca de Frango" data-price="22.00">
-                    <div class="item-image">
-                        <img src="https://placeholder.svg?height=80&width=80" alt="Isca de Frango">
-                    </div>
-                    <div class="item-info">
-                        <h3>Isca de Frango</h3>
-                        <p>Iscas de frango empanadas e fritas</p>
-                        <div class="item-price">R$ 22,00</div>
-                        <button class="add-to-cart">Adicionar</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sobremesas Category -->
-            <div class="category-items" id="sobremesas">
-                <h2>Sobremesas</h2>
-                
-                <div class="menu-item" data-id="7" data-name="Pudim" data-price="8.00">
-                    <div class="item-image">
-                        <img src="https://placeholder.svg?height=80&width=80" alt="Pudim">
-                    </div>
-                    <div class="item-info">
-                        <h3>Pudim</h3>
-                        <p>Pudim de leite condensado</p>
-                        <div class="item-price">R$ 8,00</div>
-                        <button class="add-to-cart">Adicionar</button>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-id="8" data-name="Sorvete" data-price="7.00">
-                    <div class="item-image">
-                        <img src="https://placeholder.svg?height=80&width=80" alt="Sorvete">
-                    </div>
-                    <div class="item-info">
-                        <h3>Sorvete</h3>
-                        <p>Sorvete de chocolate, morango ou creme</p>
-                        <div class="item-price">R$ 7,00</div>
-                        <button class="add-to-cart">Adicionar</button>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Cart Modal -->
-        <div id="cart-modal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Seu Pedido</h2>
-                    <span class="close-modal">&times;</span>
-                </div>
-                <div class="modal-body">
-                    <div id="cart-items">
-                        <!-- Cart items will be added here dynamically -->
-                    </div>
-                    <div class="cart-summary">
-                        <div class="summary-row">
-                            <span>Subtotal:</span>
-                            <span id="subtotal">R$ 0,00</span>
-                        </div>
-                        <div class="summary-row">
-                            <span>Taxa de Entrega:</span>
-                            <span id="delivery-fee">R$ 6,00</span>
-                        </div>
-                        <div class="summary-row total">
-                            <span>Total:</span>
-                            <span id="total">R$ 0,00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="checkout-btn" class="btn-primary">Finalizar Pedido</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Checkout Modal -->
-        <div id="checkout-modal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Finalizar Pedido</h2>
-                    <span class="close-modal">&times;</span>
-                </div>
-                <div class="modal-body">
-                    <div class="checkout-section">
-                        <h3>Tipo de Pedido</h3>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="delivery" name="order-type" value="delivery" checked>
-                                <label for="delivery">Entrega</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="pickup" name="order-type" value="pickup">
-                                <label for="pickup">Retirada</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="address-section" class="checkout-section">
-                        <h3>Endereço de Entrega</h3>
-                        <div class="form-group">
-                            <label for="street">Rua:</label>
-                            <input type="text" id="street" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="number">Número:</label>
-                            <input type="text" id="number" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="neighborhood">Bairro:</label>
-                            <input type="text" id="neighborhood" required>
-                        </div>
-                    </div>
-
-                    <div class="checkout-section">
-                        <h3>Forma de Pagamento</h3>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="pix" name="payment-method" value="pix" checked>
-                                <label for="pix">PIX</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="card" name="payment-method" value="card">
-                                <label for="card">Cartão</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="cash" name="payment-method" value="cash">
-                                <label for="cash">Dinheiro</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="pix-section" class="payment-section">
-                        <h3>Pagamento PIX</h3>
-                        <p>Chave PIX: exemplo@email.com</p>
-                        <button id="copy-pix" class="btn-secondary">Copiar Chave PIX</button>
-                    </div>
-
-                    <div id="card-section" class="payment-section hidden">
-                        <h3>Pagamento com Cartão</h3>
-                        <p>O pagamento será realizado na entrega.</p>
-                    </div>
-
-                    <div id="cash-section" class="payment-section hidden">
-                        <h3>Pagamento em Dinheiro</h3>
-                        <div class="form-group">
-                            <label for="change">Troco para:</label>
-                            <input type="number" id="change" placeholder="R$ 0,00">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="send-order" class="btn-primary">Enviar Pedido</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <meta property="og:title" content="DIPFOOD | Paris Burger" />
     <script>
-        // Loading Screen
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.getElementById('loading-screen').classList.add('hidden');
-                document.getElementById('user-info-screen').classList.remove('hidden');
+        // Função para bloquear o uso do Ctrl + U e outras teclas de desenvolvedor
+        document.addEventListener('keydown', function(event) {
+            // Bloquear Ctrl + U (visualizar código-fonte)
+            if (event.ctrlKey && event.key === 'u') {
+                event.preventDefault(); // Impede a ação padrão (abrir o código-fonte)
+                alert('Acesso ao código-fonte bloqueado!');
+            }
+
+            // Bloquear F12 (ferramentas de desenvolvedor)
+            if (event.key === 'F12') {
+                event.preventDefault(); // Impede a ação padrão
+                alert('Ferramentas de desenvolvedor bloqueadas!');
+            }
+
+            // Bloquear botão direito do mouse (para prevenir "Inspecionar" e "Ver código-fonte")
+            if (event.button === 2) {
+                event.preventDefault(); // Impede a ação padrão
+                alert('Clique direito desabilitado!');
+            }
+        });
+
+        // Impedir o uso da tecla F12 com evento 'contextmenu' (botão direito)
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault(); // Impede o menu de contexto (botão direito)
+            alert('Clique direito desabilitado!');
+        });
+
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.transition = 'opacity 0.5s ease';
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 500);
             }, 3000);
         });
 
-        // User Info Form
-        document.getElementById('user-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
+        function checkout() {
+            // Increment order counter and save
+            orderCounter++;
+            saveOrderCounter();
             
-            if (name && phone) {
-                document.getElementById('user-info-screen').classList.add('hidden');
-                document.getElementById('menu-screen').classList.remove('hidden');
-            }
-        });
-
-        // Category Navigation
-        const categories = document.querySelectorAll('.category');
-        categories.forEach(category => {
-            category.addEventListener('click', () => {
-                // Remove active class from all categories
-                categories.forEach(c => c.classList.remove('active'));
-                // Add active class to clicked category
-                category.classList.add('active');
-                
-                // Hide all category items
-                document.querySelectorAll('.category-items').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Show the selected category items
-                const categoryId = category.getAttribute('data-category');
-                document.getElementById(categoryId).classList.add('active');
-            });
-        });
-
-        // Cart Functionality
-        let cart = [];
-        const cartIcon = document.getElementById('cart-icon');
-        const cartModal = document.getElementById('cart-modal');
-        const cartItems = document.getElementById('cart-items');
-        const subtotalElement = document.getElementById('subtotal');
-        const totalElement = document.getElementById('total');
-        const deliveryFee = 6.00;
-
-        // Add to Cart
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', () => {
-                const menuItem = button.closest('.menu-item');
-                const id = menuItem.getAttribute('data-id');
-                const name = menuItem.getAttribute('data-name');
-                const price = parseFloat(menuItem.getAttribute('data-price'));
-                
-                // Check for selected addons
-                const addons = [];
-                menuItem.querySelectorAll('.addon-option input:checked').forEach(addon => {
-                    addons.push({
-                        name: addon.getAttribute('data-name'),
-                        price: parseFloat(addon.getAttribute('data-price'))
-                    });
-                });
-                
-                // Add item to cart
-                cart.push({
-                    id,
-                    name,
-                    price,
-                    addons,
-                    quantity: 1
-                });
-                
-                // Update cart count
-                document.querySelector('.cart-count').textContent = cart.length;
-                
-                // Show notification
-                alert(`${name} adicionado ao carrinho!`);
-            });
-        });
-
-        // Open Cart Modal
-        cartIcon.addEventListener('click', () => {
-            updateCartDisplay();
-            cartModal.classList.remove('hidden');
-        });
-
-        // Close Modals
-        document.querySelectorAll('.close-modal').forEach(closeBtn => {
-            closeBtn.addEventListener('click', () => {
-                closeBtn.closest('.modal').classList.add('hidden');
-            });
-        });
-
-        // Update Cart Display
-        function updateCartDisplay() {
-            cartItems.innerHTML = '';
-            let subtotal = 0;
+            const name = document.getElementById('userName').value;
+            const phone = document.getElementById('userPhone').value;
+            const deliveryType = document.querySelector('input[name="deliveryType"]:checked').value;
+            const street = document.getElementById('userStreet').value;
+            const neighborhood = document.getElementById('userNeighborhood').value;
+            const number = document.getElementById('userNumber').value;
+            const paymentType = document.querySelector('input[name="paymentType"]:checked').value;
+            const observation = document.getElementById('orderObservation').value.trim();
             
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p class="empty-cart">Seu carrinho está vazio</p>';
-            } else {
-                cart.forEach((item, index) => {
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'cart-item';
-                    
-                    let itemTotal = item.price;
-                    let addonsHtml = '';
-                    
-                    if (item.addons.length > 0) {
-                        addonsHtml = '<ul class="addon-list">';
-                        item.addons.forEach(addon => {
-                            addonsHtml += `<li>• ${addon.name} (+R$ ${addon.price.toFixed(2).replace('.', ',')})</li>`;
-                            itemTotal += addon.price;
-                        });
-                        addonsHtml += '</ul>';
-                    }
-                    
-                    itemElement.innerHTML = `
-                        <div class="cart-item-info">
-                            <h3>${item.name}</h3>
-                            ${addonsHtml}
-                            <div class="cart-item-price">R$ ${itemTotal.toFixed(2).replace('.', ',')}</div>
-                        </div>
-                        <button class="remove-item" data-index="${index}">×</button>
-                    `;
-                    
-                    cartItems.appendChild(itemElement);
-                    subtotal += itemTotal;
-                });
-            }
-            
-            // Update totals
-            subtotalElement.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-            const total = subtotal + deliveryFee;
-            totalElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-            
-            // Add event listeners to remove buttons
-            document.querySelectorAll('.remove-item').forEach(button => {
-                button.addEventListener('click', () => {
-                    const index = button.getAttribute('data-index');
-                    cart.splice(index, 1);
-                    document.querySelector('.cart-count').textContent = cart.length;
-                    updateCartDisplay();
-                });
-            });
-        }
-
-        // Checkout Button
-        document.getElementById('checkout-btn').addEventListener('click', () => {
-            if (cart.length === 0) {
-                alert('Seu carrinho está vazio!');
+            if (!name || !phone) {
+                alert('Por favor, preencha seu nome e telefone antes de finalizar o pedido.');
                 return;
             }
-            
-            cartModal.classList.add('hidden');
-            document.getElementById('checkout-modal').classList.remove('hidden');
-        });
 
-        // Payment Method Selection
-        document.querySelectorAll('input[name="payment-method"]').forEach(input => {
-            input.addEventListener('change', () => {
-                document.querySelectorAll('.payment-section').forEach(section => {
-                    section.classList.add('hidden');
-                });
-                
-                const method = document.querySelector('input[name="payment-method"]:checked').value;
-                document.getElementById(`${method}-section`).classList.remove('hidden');
-            });
-        });
-
-        // Order Type Selection
-        document.querySelectorAll('input[name="order-type"]').forEach(input => {
-            input.addEventListener('change', () => {
-                const addressSection = document.getElementById('address-section');
-                if (document.getElementById('delivery').checked) {
-                    addressSection.classList.remove('hidden');
-                } else {
-                    addressSection.classList.add('hidden');
-                }
-            });
-        });
-
-        // Copy PIX
-        document.getElementById('copy-pix').addEventListener('click', () => {
-            navigator.clipboard.writeText('exemplo@email.com');
-            alert('Chave PIX copiada!');
-        });
-
-        // Send Order to WhatsApp
-        document.getElementById('send-order').addEventListener('click', () => {
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const orderType = document.querySelector('input[name="order-type"]:checked').value;
-            const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
-            
-            let addressText = '';
-            if (orderType === 'delivery') {
-                const street = document.getElementById('street').value;
-                const number = document.getElementById('number').value;
-                const neighborhood = document.getElementById('neighborhood').value;
-                
-                if (!street || !number || !neighborhood) {
-                    alert('Por favor, preencha o endereço completo.');
-                    return;
-                }
-                
-                addressText = `Endereço: ${street}, ${number} - ${neighborhood}`;
+            if (deliveryType === 'delivery' && (!street || !neighborhood || !number)) {
+                alert('Por favor, preencha todos os campos do endereço para entrega.');
+                return;
             }
-            
-            let changeText = '';
-            if (paymentMethod === 'cash') {
-                const changeAmount = document.getElementById('change').value;
-                if (changeAmount) {
-                    changeText = `Troco para: R$ ${changeAmount}`;
-                }
-            }
-            
-            // Calculate totals
-            let subtotal = 0;
-            cart.forEach(item => {
-                let itemTotal = item.price;
-                item.addons.forEach(addon => {
-                    itemTotal += addon.price;
-                });
-                subtotal += itemTotal;
-            });
-            
-            const total = subtotal + deliveryFee;
-            
-            // Format date and time
+
+            // Get current date and time
             const now = new Date();
-            const dateStr = now.toLocaleDateString('pt-BR');
-            const timeStr = now.toLocaleTimeString('pt-BR');
+            const dateStr = now.toLocaleDateString();
+            const timeStr = now.toLocaleTimeString();
+
+            let message = `Pedido #${orderCounter}🔔 * (${dateStr} - ${timeStr})\n`;
+            message += `------------------------\n`;
             
-            // Create order message
-            let message = `🔔 Pedido #1 (${dateStr} - ${timeStr})\n`;
-            message += '------------------------\n';
-            
-            cart.forEach(item => {
-                message += `${item.name}\n`;
-                
-                item.addons.forEach(addon => {
-                    message += `   • ${addon.name} (+R$ ${addon.price.toFixed(2)})\n`;
-                });
-                
-                let itemTotal = item.price;
-                item.addons.forEach(addon => {
-                    itemTotal += addon.price;
-                });
-                
-                message += `Valor: R$ ${itemTotal.toFixed(2)}\n`;
-                message += '------------------------\n';
+            let subTotal = 0;
+        
+            // Rest of the checkout function remains the same...
+        }
+
+        function isDrinkItem(item) {
+            // Check if the item exists in the drinks category
+            return menuItems.drinks.some(drink => drink.name === item.name);
+        }
+
+        let currentItem = null;
+        let currentCategory = 'all';
+
+function openAddonsModal(itemName, itemPrice) {
+    currentItem = { name: itemName, price: itemPrice };
+    populateAddonsModal();
+    document.getElementById('addons-modal').style.display = 'flex';
+    
+    // Reset all checkboxes
+    document.querySelectorAll('#addons-modal input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+    });
+    
+    updateModalTotal();
+}
+
+function closeAddonsModal() {
+    document.getElementById('addons-modal').style.display = 'none';
+    currentItem = null;
+}
+
+function updateModalTotal() {
+    if (!currentItem) return;
+    
+    let total = currentItem.price;
+    const selectedAddons = Array.from(document.querySelectorAll('#addons-modal input[type="checkbox"]:checked'));
+    
+    selectedAddons.forEach(checkbox => {
+        total += parseFloat(checkbox.dataset.price);
+    });
+    
+    document.getElementById('modal-total').textContent = `Total: R$ ${total.toFixed(2)}`;
+}
+
+function populateAddonsModal() {
+    const addonsGrid = document.getElementById('addons-grid');
+    addonsGrid.innerHTML = '';
+    
+    addOns.forEach(addon => {
+        const addonElement = document.createElement('label');
+        addonElement.className = 'addon-option';
+        addonElement.innerHTML = `
+            <input type="checkbox" data-addon="${addon.name}" data-price="${addon.price}" onchange="updateModalTotal()">
+            <span>${addon.name} (+R$ ${addon.price.toFixed(2)})</span>
+        `;
+        addonsGrid.appendChild(addonElement);
+    });
+}
+
+function confirmAddons() {
+    if (!currentItem) return;
+    
+    const selectedAddons = Array.from(document.querySelectorAll('#addons-modal input[type="checkbox"]:checked')).map(checkbox => ({
+        name: checkbox.dataset.addon,
+        price: parseFloat(checkbox.dataset.price)
+    }));
+    
+    // Check if item with same name and addons already exists
+    const existingItemIndex = cart.findIndex(item => {
+        if (item.name !== currentItem.name) return false;
+        
+        // Compare addons
+        if ((!item.addons || item.addons.length === 0) && (!selectedAddons || selectedAddons.length === 0)) {
+            return true;
+        }
+        
+        if (!item.addons || !selectedAddons || item.addons.length !== selectedAddons.length) {
+            return false;
+        }
+        
+        // Sort both arrays by name for comparison
+        const sortedItemAddons = [...item.addons].sort((a, b) => a.name.localeCompare(b.name));
+        const sortedSelectedAddons = [...selectedAddons].sort((a, b) => a.name.localeCompare(b.name));
+        
+        return sortedItemAddons.every((addon, index) => 
+            addon.name === sortedSelectedAddons[index].name && 
+            addon.price === sortedSelectedAddons[index].price
+        );
+    });
+    
+    if (existingItemIndex !== -1) {
+        // Item exists, increment quantity
+        cart[existingItemIndex].quantity = (cart[existingItemIndex].quantity || 1) + 1;
+    } else {
+        // New item, add to cart
+        cart.push({
+            name: currentItem.name,
+            price: currentItem.price,
+            addons: selectedAddons,
+            quantity: 1
+        });
+    }
+    
+    updateCart();
+    closeAddonsModal();
+}
+
+function createMenuItem(item) {
+    return `
+        <div class="menu-item">
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+            <div class="price">R$ ${item.price.toFixed(2)}</div>
+            <div class="item-buttons">
+                <button class="add-to-cart" onclick="addToCart('${item.name}', ${item.price}, this)">
+                    Adicionar ao Carrinho
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+function selectCategory(category) {
+    currentCategory = category;
+    
+    // Update active category button
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector(`[data-category="${category}"]`).classList.add('active');
+    
+    // Show/hide menu sections
+    const allSections = document.querySelectorAll('.menu-section');
+    allSections.forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    if (category === 'all') {
+        allSections.forEach(section => {
+            section.style.display = 'block';
+        });
+    } else {
+        const targetSection = document.getElementById(category + '-section') || document.getElementById(category);
+        if (targetSection) {
+            targetSection.style.display = 'block';
+        }
+    }
+}
+    </script>
+    </head>
+    <body>
+    <div id="loading-screen" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    ">
+        <div style="text-align: center;">
+            <img src="logo.png" 
+                 alt="Loading Logo" 
+                 style="width: 150px; height: auto; margin-bottom: 20px;">
+            <p style="color: #ff6b01; margin-top: 20px; font-size: 18px;">Carregando...</p>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div>
+            <h1>Paris Burger</h1>
+            <p style="font-size: 0.8rem; margin-top: 5px;">Nos Encontre: Marechal Candido Rondon, 442 - Jd São Benedito, Novo Horizonte, SP</p>
+                <p style="font-size: 0.8rem; margin-top: 5px;"></p>
+                <i class="fas fa-phone"></i> (17)996232492 &nbsp;&nbsp; 
+                <i class="fas fa-phone"></i> (17)991394054
+        </div>
+    </div>
+    
+    <div class="container">
+        <div style="width: 100%; height: 200px; overflow: hidden; border-radius: 10px; margin-bottom:20px;">
+            <img src="banner.png" alt="Estabelecimento" style="width:100%;height:200px;object-fit:cover;">
+        </div>
+        <div class="user-info">
+            <h2>Seus Dados</h2>
+            <input type="text" id="userName" placeholder="Seu Nome">
+            <input type="tel" id="userPhone" placeholder="Seu Telefone">
+            <div class="delivery-type">
+                <label>
+                    <input type="radio" name="deliveryType" value="pickup" checked=""> Retirada
+                </label>
+                <label>
+                    <input type="radio" name="deliveryType" value="delivery"> Entrega
+                </label>
+                <label style="display: flex; align-items: center; gap: 5px;">
+                    <input type="radio" name="deliveryType" value="dineIn">
+                    Mesa
+                </label>
+            </div>
+            <div id="addressField">
+                <input type="text" id="userStreet" placeholder="Nome da Rua">
+                <input type="text" id="userNeighborhood" placeholder="Bairro">
+                <input type="text" id="userNumber" placeholder="Número da Casa">
+            </div>
+
+            <!-- New observation field -->
+            <div class="observation-field">
+                <h3>Observações do Pedido</h3>
+                <textarea id="orderObservation" placeholder="Alguma observação para seu pedido? Ex: Sem cebola, bem passado, etc." rows="3"></textarea>
+            </div>
+
+            <div class="payment-type">
+                <h3 style="color: white;">Forma de Pagamento</h3>
+                <div class="payment-options">
+                    <label>
+                        <input type="radio" name="paymentType" value="debit" checked>
+                        Débito
+                    </label>
+                    <label>
+                        <input type="radio" name="paymentType" value="credit">
+                        Crédito
+                    </label>
+                    <label>
+                        <input type="radio" name="paymentType" value="money">
+                        Dinheiro
+                    </label>
+                    <label>
+                        <input type="radio" name="paymentType" value="pix">
+                        PIX
+                    </label>
+                </div>
+                <div id="pixField" style="display: none;">
+                    <p style="color: white;">Chave PIX: (17)996232492</p>
+                </div>
+                <div id="changeField" style="display: none;">
+                    <input type="number" id="changeAmount" placeholder="Troco Para Quanto?">
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Selector -->
+        <div class="category-selector">
+            <div class="category-scroll">
+                <button class="category-btn active" data-category="all" onclick="selectCategory('all')">
+                    <i class="fas fa-th-large"></i>
+                    <span>Todos</span>
+                </button>
+                <button class="category-btn" data-category="sandwiches" onclick="selectCategory('sandwiches')">
+                    <i class="fas fa-hamburger"></i>
+                    <span>Lanches</span>
+                </button>
+                <button class="category-btn" data-category="diverse" onclick="selectCategory('diverse')">
+                    <i class="fas fa-utensils"></i>
+                    <span>Artesanais</span>
+                </button>
+                <button class="category-btn" data-category="frango" onclick="selectCategory('frango')">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <span>Frango</span>
+                </button>
+                <button class="category-btn" data-category="carne" onclick="selectCategory('carne')">
+                    <i class="fas fa-bacon"></i>
+                    <span>Carne</span>
+                </button>
+                <button class="category-btn" data-category="dog" onclick="selectCategory('dog')">
+                    <i class="fas fa-hotdog"></i>
+                    <span>HotDog</span>
+                </button>
+                <button class="category-btn" data-category="drinks" onclick="selectCategory('drinks')">
+                    <i class="fas fa-glass-cheers"></i>
+                    <span>Bebidas</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="menu-section" id="sandwiches">
+            <h2>Lanches</h2>
+            <div class="menu-grid" id="sandwiches-grid"></div>
+        </div>
+
+        <div class="menu-section" id="diverse-section">
+            <h2>Artesanais</h2>
+            <div class="menu-grid" id="diverse"></div>
+        </div>
+
+        <div class="menu-section" id="frango-section">
+            <h2>Frango</h2>
+            <div class="menu-grid" id="frango"></div>
+        </div>
+
+        <div class="menu-section" id="carne-section">
+            <h2>Carne</h2>
+            <div class="menu-grid" id="carne"></div>
+        </div>
+
+        <div class="menu-section" id="dog-section">
+            <h2>Hotdog</h2>
+            <div class="menu-grid" id="dog"></div>
+        </div>
+
+        <div class="menu-section" id="drinks-section">
+            <h2>Bebidas</h2>
+            <div class="menu-grid" id="drinks"></div>
+        </div>
+
+        <div style="text-align: center; padding: 20px 0 40px 0;">
+            <a href="https://maissitedelivery.com/1312/categorias" style="
+                display: inline-block;
+                background-color: var(--primary);
+                color: white;
+                padding: 15px 30px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: bold;
+                margin-top: 20px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                transition: all 0.3s ease;
+            ">
+                Acessar Cardápio Completo
+            </a>
+        </div>
+    </div>
+    
+    <div class="cart" id="cart">
+        <h2>Carrinho</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total">Total: R$ 0.00</div>
+        <div class="cart-buttons">
+            <button class="checkout-btn" onclick="checkout()">Finalizar Pedido</button>
+        </div>
+    </div>
+    
+    <script>
+    let orderCounter = 0;
+
+    async function loadOrderCounter() {
+        try {
+            const response = await fetch('/orderCounter.txt');
+            if (response.ok) {
+                const count = await response.text();
+                orderCounter = parseInt(count) || 0;
+            }
+        } catch (error) {
+            console.log('Could not load counter, starting from 0');
+            orderCounter = 0;
+        }
+    }
+
+    async function saveOrderCounter() {
+        try {
+            const response = await fetch('/saveCounter', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ counter: orderCounter })
             });
             
-            message += `Sub Total: R$ ${subtotal.toFixed(2)}\n`;
-            message += `Taxa de Entrega: R$ ${deliveryFee.toFixed(2)}\n`;
-            message += `Total: R$ ${total.toFixed(2)}\n`;
-            
-            let paymentText = '';
-            switch(paymentMethod) {
-                case 'pix':
-                    paymentText = 'PIX';
-                    break;
-                case 'card':
-                    paymentText = 'Cartão';
-                    break;
-                case 'cash':
-                    paymentText = 'Dinheiro';
-                    if (changeText) {
-                        paymentText += ` (${changeText})`;
-                    }
-                    break;
+            if (!response.ok) {
+                console.error('Failed to save counter');
+            }
+        } catch (error) {
+            console.error('Error saving counter:', error);
+        }
+    }
+
+    const addOns = [
+            { name: "Hamburguer 150g", price: 8.00 },
+            { name: "Hamburguer comum 90g", price: 4.00 },
+            { name: "Bacon", price: 5.00 },
+            { name: "Calabresa", price: 4.00 },
+            { name: "Milho", price: 4.00 },
+            { name: "Presunto", price: 4.00 },
+            { name: "Mussarela", price: 5.00 },
+            { name: "Cheddar", price: 5.00 },
+            { name: "Catupiry", price: 5.00 },
+            { name: "Frango", price: 4.00 },
+            { name: "Contra Filé", price: 8.00 },
+            { name: "Salsicha", price: 2.00 },
+            { name: "Alface", price: 2.00 },
+            { name: "Tomate", price: 2.00 },
+            { name: "Cebola", price: 2.00 },
+            { name: "Cebola Caramelizada", price: 3.00 },
+            { name: "3 Cebolas Empanadas", price: 7.00 },
+            { name: "Bacon Fatiado", price: 7.00 },
+            { name: "Ovo", price: 3.00 },
+        ];
+        const menuItems = {
+            sandwiches: [
+                { name: "Misto Quente", price: 14.00, description: "Hambúrguer, queijo, Presunto, tomate e Maionese da Casa",noAddons: false },
+                { name: "X-Burguer", price: 12.00, description: "Hambúrguer, queijo, tomate e Maionese da Casa" },
+                { name: "X-Salada", price: 13.00, description: "Hambúrguer, queijo, alface, tomate e Maionese da Casa" },
+                { name: "X-Catupiry", price: 18.00, description: "Hambúrguer, Catupiry, queijo, alface, tomate e Maionese da Casa" },
+                { name: "X-Calabresa", price: 17.00, description: "Hambúrguer, Calabresa, queijo, alface, tomate e Maionese da Casa" },
+                { name: "X-Bacon", price: 18.00, description: "Hambúrguer, Bacon, queijo, alface, tomate e Maionese da Casa" },
+                { name: "X-Milho", price: 14.00, description: "Hambúrguer, milho, salada e mussarela" },
+                { name: "X-Egg", price: 14.00, description: "Hambúrguer, Ovo, queijo, alface, tomate e Maionese da Casa" },
+                { name: "X-Tudo", price: 20.00, description: "Hambúrguer, Queijo, bacon, calabresa, catupiry, ovo, frango, alface, tomate e Maionese da Casa" },
+                { name: "X-Pit Bull", price: 34.00, description: "Hambúrguer 150g, 1 Hamburguer tradicional, 2 Salsichas, Queijo, bacon, calabresa, catupiry, 2 ovos, frango, alface, tomate e Maionese da Casa" }
+            ],
+            diverse: [
+                { name: "Ipanema", price: 20.00, description: "Pão, hambúrguer 150g, queijo, alface, tomate, cebola roxa, maionese da casa" },
+                { name: "Itália", price: 26.00, description: "Pão, hambúrguer 150g, queijo, bacon, cebola caramelizada, alho crocante, alface, tomate, maionese da casa" },
+                { name: "Bom Bacon", price: 24.00, description: "Pão, hambúrguer 150g, queijo, bacon, alface, tomate, maionese da casa" },
+                { name: "3 Queijos", price: 27.00, description: "Pão, hambúrguer 150g, 3 queijos, queijo, cheddar, catupiry Scala" },
+                { name: "Paris Burguer", price: 25.00, description: "Pão, hambúrguer 150g, queijo, 3 cebolas empanadas, tomate, maionese da casa" },
+                { name: "Dubai", price: 25.00, description: "Pão, hambúrguer 150g, queijo, ovo, cheddar Scala, alface, tomate, cebola roxa, maionese da casa" },
+                { name: "Manaus", price: 27.00, description: "Pão, hambúrguer 150g, queijo, bacon, catupiry, alface, cebola roxa, farofa com alho crocante, maionese da casa" },
+                { name: "Minas", price: 23.00, description: "Pão, 2 hambúrgueres 150g, queijo, cheddar, alface, tomate, maionese da casa" },
+                { name: "Mega Burguer", price: 28.00, description: "Pão, 2 hambúrgueres 150g, queijo, cebola caramelizada, maionese da casa" },
+                { name: "Top Bacon", price: 20.00, description: "Pão, 2 hambúrgueres 150g, queijo, cheddar, bacon, maionese da casa" },
+                { name: "Tubarão", price: 33.00, description: "Pão, 2 hambúrgueres 150g, 2 camadas de cheddar, 2 camadas de bacon, cebola roxa" }
+            ],
+           frango: [
+            { name: "X-Frango", price: 16.00, description: "Pão, frango, queijo, tomate, maionese da casa" },
+            { name: "X-Frango Bacon", price: 20.00, description: "Pão, frango, bacon, queijo, tomate, maionese da casa" },
+            { name: "X-Frango Catupiry", price: 20.00, description: "Pão, frango, catupiry, queijo, tomate, maionese da casa" },
+            { name: "X-Frango Casamba", price: 25.00, description: "Pão, frango, bacon, calabresa, queijo, batata palha, alface, tomate, maionese da casa" }
+            ],
+           carne: [
+            { name: "X-Bauru", price: 22.00, description: "Pão, carne, queijo, tomate, maionese da casa" },
+            { name: "X-Bauru Bacon", price: 25.00, description: "Pão, carne, bacon, queijo, tomate, maionese da casa" },
+            { name: "X-Bauru Catupiry", price: 25.00, description: "Pão, carne, catupiry, queijo, tomate, maionese da casa" }
+            ],
+           dog: [
+            { name: "Hot Dog Quente", price: 10.00, description: "Pão, 2 salsichas, maionese, catchup, mostarda, batata palha" },
+            { name: "Hot Dog Bacon", price: 17.00, description: "Pão, 2 salsichas, maionese, catchup, mostarda, bacon, batata palha" },
+            { name: "Hot Dog Completo", price: 19.00, description: "Pão, 2 salsichas, maionese, catchup, mostarda, tomate, bacon, catupiry, batata palha" }
+            ],
+            drinks: [
+                { name: "Roller", price: 10.00, description: "2L" },
+                { name: "Poty", price: 10.00, description: "2L" },
+                { name: "Coca Cola", price: 15.00, description: "2L" },
+                { name: "Fanta Laranja", price: 12.00, description: "2L" },
+                { name: "Fanta Uva", price: 12.00, description: "2L" },
+                { name: "Sprite", price: 12.00, description: "2L" },
+                { name: "Roller", price: 6.00, description: "600ML" },
+                { name: "Poty", price: 6.00, description: "600ml" },
+                { name: "Roller", price: 6.00, description: "Lata" },
+                { name: "Poty", price: 6.00, description: "Lata" },
+                { name: "Coca Cola", price: 6.00, description: "Lata" },
+                { name: "Fanta Laranja", price: 6.00, description: "Lata" },
+                { name: "Sprite", price: 6.00, description: "Lata" },
+                { name: "Crystal", price: 4.00, description: "Lata" },
+                { name: "Antarctica Boa", price: 5.00, description: "Lata" }
+            ]
+        };
+    
+    let cart = [];
+    let deliveryFee = 0;
+    
+    function displayMenuItemsUpdate() {
+        Object.keys(menuItems).forEach(category => {
+            let container;
+            if (category === 'sandwiches') {
+                container = document.getElementById('sandwiches-grid');
+            } else {
+                container = document.getElementById(category);
             }
             
-            message += `Forma de pagto: ${paymentText}\n`;
-            message += '------------------------\n';
-            message += `Tipo: ${orderType === 'delivery' ? 'Entrega' : 'Retirada'}\n`;
-            
-            if (addressText) {
-                message += `${addressText}\n\n`;
+            if (container) {
+                menuItems[category].forEach(item => {
+                    container.innerHTML += createMenuItem(item);
+                });
             }
-            
-            message += `👤 Cliente: ${name}\n`;
-            message += `📲 Telefone: ${phone}`;
-            
-            // Encode message for WhatsApp URL
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/5517992095122?text=${encodedMessage}`;
-            
-            // Open WhatsApp
-            window.open(whatsappUrl, '_blank');
         });
+    }
+    
+    function addToCart(name, price, buttonElement) {
+        // For drinks, add directly to cart without showing addons modal
+        if (isDrinkItem({ name: name })) {
+            // Check if item already exists
+            const existingItemIndex = cart.findIndex(item => item.name === name && (!item.addons || item.addons.length === 0));
+            
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity = (cart[existingItemIndex].quantity || 1) + 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    addons: [],
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+        } else {
+            // For food items, show addons modal
+            openAddonsModal(name, price);
+        }
+    }
+    
+    function updateCart() {
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    let total = 0;
+
+    cartItems.innerHTML = '';
+    cart.forEach((item, index) => {
+        let itemTotal = item.price;
+        let addonsText = '';
+        const quantity = item.quantity || 1;
+        
+        if (item.addons && item.addons.length > 0) {
+            addonsText = '<div class="cart-item-addons">';
+            item.addons.forEach(addon => {
+                itemTotal += addon.price;
+                addonsText += `<div>+ ${addon.name} (R$ ${addon.price.toFixed(2)})</div>`;
+            });
+            addonsText += '</div>';
+        }
+        
+        const totalItemPrice = itemTotal * quantity;
+        total += totalItemPrice;
+        
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                <div>
+                    <span>${quantity}x ${item.name}</span>
+                    ${addonsText}
+                </div>
+                <span>R$ ${totalItemPrice.toFixed(2)}</span>
+                <div class="cart-item-controls">
+                    <button onclick="decreaseQuantity(${index})">-</button>
+                    <button onclick="removeFromCart(${index})">X</button>
+                </div>
+            </div>
+        `;
+    });
+
+    const deliveryType = document.querySelector('input[name="deliveryType"]:checked').value;
+    if (deliveryType === 'delivery') {
+        deliveryFee = 6.00;
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                <span>Taxa de Entrega</span>
+                <span>R$ ${deliveryFee.toFixed(2)}</span>
+            </div>
+        `;
+        total += deliveryFee;
+    } else {
+        deliveryFee = 0;
+    }
+
+    cartTotal.innerHTML = `Total: R$ ${total.toFixed(2)}`;
+    
+    // Trigger change recalculation
+    const changeAmount = document.getElementById('changeAmount');
+    if (changeAmount && changeAmount.value) {
+        updateChangeDisplay(total);
+    }
+}
+    
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+    
+    function decreaseQuantity(index) {
+    if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+    } else {
+        cart.splice(index, 1);
+    }
+    updateCart();
+}
+    
+    document.querySelectorAll('input[name="deliveryType"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const addressField = document.getElementById('addressField');
+            if (this.value === 'delivery') {
+                addressField.classList.add('show');
+            } else {
+                addressField.classList.remove('show');
+            }
+            updateCart();
+        });
+    });
+    
+    document.querySelectorAll('input[name="paymentType"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const pixField = document.getElementById('pixField');
+            const changeField = document.getElementById('changeField');
+            
+            pixField.style.display = this.value === 'pix' ? 'block' : 'none';
+            changeField.style.display = this.value === 'money' ? 'block' : 'none';
+        });
+    });
+    
+    function calculateChange(total, amountGiven) {
+        if (amountGiven < total) {
+            return null;
+        }
+        return amountGiven - total;
+    }
+
+    document.getElementById('changeAmount').addEventListener('input', function() {
+        const cartTotal = cart.reduce((sum, item) => {
+        let itemTotal = item.price;
+        const quantity = item.quantity || 1;
+        if (item.addons) {
+            itemTotal += item.addons.reduce((addonSum, addon) => addonSum + addon.price, 0);
+        }
+        return sum + (itemTotal * quantity);
+    }, 0) + deliveryFee;
+
+        updateChangeDisplay(cartTotal);
+    });
+    
+    function checkout() {
+        // Increment order counter and save cart-total
+        orderCounter++;
+        saveOrderCounter();
+        
+        const name = document.getElementById('userName').value;
+        const phone = document.getElementById('userPhone').value;
+        const deliveryType = document.querySelector('input[name="deliveryType"]:checked').value;
+        const street = document.getElementById('userStreet').value;
+        const neighborhood = document.getElementById('userNeighborhood').value;
+        const number = document.getElementById('userNumber').value;
+        const paymentType = document.querySelector('input[name="paymentType"]:checked').value;
+        const observation = document.getElementById('orderObservation').value.trim();
+        
+        if (!name || !phone) {
+            alert('Por favor, preencha seu nome e telefone antes de finalizar o pedido.');
+            return;
+        }
+
+        let totalProdutos = cart.reduce((total, item) => {
+        let itemTotal = item.price;
+        const quantity = item.quantity || 1;
+        if (item.addons && item.addons.length > 0) {
+            itemTotal += item.addons.reduce((addonSum, addon) => addonSum + addon.price, 0);
+        }
+        return total + (itemTotal * quantity);
+    }, 0);
+
+        if (totalProdutos < 7) {
+            alert("Seu Carrinho está vazio, Adicione Pedidos para Realizar o pedido!");
+            return;
+        }
+        if (deliveryType === 'delivery' && (!street || !neighborhood || !number)) {
+            alert('Por favor, preencha todos os campos do endereço para entrega.');
+            return;
+        }
+
+        // Get current date and time
+        const now = new Date();
+        const dateStr = now.toLocaleDateString();
+        const timeStr = now.toLocaleTimeString();
+
+        let message = `🔔 *Pedido #${orderCounter}* (${dateStr} - ${timeStr})\n`;
+        message += `------------------------\n`;
+        
+        let subTotal = 0;
+
+        // List items
+        cart.forEach(item => {
+        let itemTotal = item.price;
+        const quantity = item.quantity || 1;
+        
+        message += `*${quantity}x ${item.name}*\n`;
+        
+        if (item.addons && item.addons.length > 0) {
+            item.addons.forEach(addon => {
+                message += `   • ${addon.name} (+R$ ${addon.price.toFixed(2)})\n`;
+                itemTotal += addon.price;
+            });
+        }
+        
+        const totalItemPrice = itemTotal * quantity;
+        message += `*Valor:* R$ ${totalItemPrice.toFixed(2)}\n`;
+        message += `------------------------\n`;
+        subTotal += totalItemPrice;
+    });
+
+        let total = subTotal;
+        
+        message += `*Sub Total:* R$ ${subTotal.toFixed(2)}\n`;
+        
+        if (deliveryType === 'delivery') {
+            total += deliveryFee;
+            message += `*Taxa de Entrega:* R$ ${deliveryFee.toFixed(2)}\n`;
+        }
+        
+        message += `*Total:* R$ ${total.toFixed(2)}\n`;
+        message += `*Forma de pagto:* ${
+            paymentType === 'money' ? 'Dinheiro' :
+            paymentType === 'debit' ? 'Cartão de Débito' :
+            paymentType === 'credit' ? 'Cartão de Crédito' :
+            'PIX'
+        }\n`;
+        
+        if (paymentType === 'money') {
+            const changeAmount = document.getElementById('changeAmount').value;
+            if (changeAmount) {
+                const change = calculateChange(total, parseFloat(changeAmount));
+                message += `*Troco para:* R$ ${parseFloat(changeAmount).toFixed(2)}\n`;
+                message += `*Troco a devolver:* R$ ${change.toFixed(2)}\n`;
+            }
+        }
+
+        // Include observation in the message
+        if (observation) {
+            message += `\n📝 *Observações:*\n${observation}\n`;
+        }
+        
+        message += `------------------------\n`;
+        message += `*Tipo:* ${
+            deliveryType === 'delivery' ? 'Entrega' : 
+            deliveryType === 'dineIn' ? 'Comer No Local' : 
+            'Retirada'
+        }\n`;
+    
+        if (deliveryType === 'delivery') {
+            message += `*Endereço:* ${street}, ${number} - ${neighborhood}\n`;
+        }
+        message += `\n👤 *Cliente:* ${name}\n`;
+        message += `📲 *Telefone:* ${phone}`;
+        
+        const encodedMessage = encodeURIComponent(message);
+        window.open(`https://wa.me/5517996232492?text=${encodedMessage}`);
+    }
+    
+    displayMenuItemsUpdate();
+    document.addEventListener('DOMContentLoaded', loadOrderCounter);
+    populateAddonsModal();
     </script>
-</body>
-</html>
+    
+    <!-- Addons Modal -->
+<div id="addons-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Escolha seus Extras</h3>
+            <button class="close-btn" onclick="closeAddonsModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="addons-grid" id="addons-grid">
+    <!-- Addons will be dynamically generated here -->
+</div>
+        </div>
+        <div class="modal-footer">
+            <div id="modal-total" class="modal-total">Total: R$ 0.00</div>
+            <div class="modal-buttons">
+                <button class="cancel-btn" onclick="closeAddonsModal()">Cancelar</button>
+                <button class="confirm-btn" onclick="confirmAddons()">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+</div>
+    </body></html>
